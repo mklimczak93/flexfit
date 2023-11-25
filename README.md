@@ -25,6 +25,14 @@ The main functionalities – studio owner side:
 -	Seeing the list of sign-uped users,
 -	Receive funds from the sign-ups.
 
+
+![01  Login](https://github.com/mklimczak93/flexfit/assets/123643355/f2a323bb-8b26-4543-b5e3-22f9572d4bc0)
+01. Login page
+
+![02  Main page](https://github.com/mklimczak93/flexfit/assets/123643355/52cfcf07-4a59-432c-a4b8-1da6552f6f9d)
+02. Main page
+
+
 **Distinctiveness and Complexity**
 
 Although the general idea of the functionality of the designed web application was inspired by an existing platform, both frontend and its design, and backend and its solutions were written from scratch.
