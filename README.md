@@ -1,4 +1,4 @@
-** FLEXFIT – Flexible fitness classes booking app **
+**FLEXFIT – Flexible fitness classes booking app**
 
 #### Video Demo:  https://youtu.be/Ed9B-PfPLDM
 
@@ -25,6 +25,7 @@ The main functionalities – studio owner side:
 -	Seeing the list of sign-uped users,
 -	Receive funds from the sign-ups.
 
+  **Project Screens**
 
 ![01  Login](https://github.com/mklimczak93/flexfit/assets/123643355/f2a323bb-8b26-4543-b5e3-22f9572d4bc0)
 01. Login page
