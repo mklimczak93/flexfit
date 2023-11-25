@@ -32,6 +32,26 @@ The main functionalities – studio owner side:
 ![02  Main page](https://github.com/mklimczak93/flexfit/assets/123643355/52cfcf07-4a59-432c-a4b8-1da6552f6f9d)
 02. Main page
 
+![03  Class details](https://github.com/mklimczak93/flexfit/assets/123643355/b455906a-d857-4a5c-be2d-1df6c720cfbd)
+03. Class details
+
+![04  Calendar](https://github.com/mklimczak93/flexfit/assets/123643355/63170502-1b51-4bc6-b920-f69837bde838)
+04. User's calendar
+
+![05  List](https://github.com/mklimczak93/flexfit/assets/123643355/4c63e4dc-5955-4dda-8e43-9f1678f1309d)
+05. User's classes list
+
+![06  Edit profile](https://github.com/mklimczak93/flexfit/assets/123643355/0385ea3c-5863-4a96-87b6-372f43077bfa)
+06. Editing profile
+
+![07  Plans](https://github.com/mklimczak93/flexfit/assets/123643355/f64f39be-aaf2-49d4-a63b-66f9a0e6f42c)
+07. Changing user subsciprion plan
+
+![09  Partner login](https://github.com/mklimczak93/flexfit/assets/123643355/b2aeebcd-e9f5-495d-a3b7-b6472b2d1ca5)
+08. Studio Partner login
+
+![08  Studio main page](https://github.com/mklimczak93/flexfit/assets/123643355/9e1dfb2e-2cc8-4dd5-bf99-de56449fd1f5)
+09. Studio owner overview page
 
 **Distinctiveness and Complexity**
 
@@ -52,10 +72,12 @@ Finally, there are some things that I have learnt along the way that I would des
 I must conclude that despite the app was quite time-consuming to finish, I have definitely learnt a lot from it, especially when it comes to planning everything out. I think with gained experience, it will be easier for me to predict certain “bottle necks” and avoid having to make “awkward” optimisations, but also I think I would like to definitely devote more time to planning out all layouts, mobile, tablet and desktop, thinking carefully about all the functionalities and what they would require from models, and deliberating how to structure my main models well from the beginning.
 
 **How to run**
+
 This application was designed with Django. To run project please use:
 python manage.py runserver
 
 **APIs, packages, modules and libraries required**
+
 - datetime module,
 - pytz library,
 - markdown2,
