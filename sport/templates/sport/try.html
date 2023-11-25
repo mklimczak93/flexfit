@@ -1,0 +1,36 @@
+{% extends "sport/layout.html" %}
+
+{% block body %}
+<div class="main-box">
+	<div class="half" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px; background: #da64ab;">
+		{% load static %}
+        <img src="{% static 'flexfit_promo_photo.jpg' %}" style="object-fit: cover; max-width: 100%; opacity: 0.8;" alt="flexfit promo photo">
+	</div>
+	<div class="half" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; padding: 30px;">
+		<div class="login-menu" style="text-align:center;">
+			<h1 style="margin-bottom:30px;">
+				One app for all things
+				<br>fitness, wellness &
+				<br>beauty
+			</h1>
+			<h4>
+				Fitflex gives you a worldwide access to
+				<br>thousands of top-rated gyms, fitness studios,
+				<br>salons and spas.
+			</h4>
+			<br>
+			<a class="try-button" href="{% url 'register' %}" style="text-decoration:none;">Try for free</a>
+			<a class="login-button" href="{% url 'plans' %}" style="text-decoration:none;">Tell me more about FitFlex</a>
+			<br>
+			<a href="{% url 'index' %}">Browse classes & appontments</a>
+			<br>
+			<br>
+			<p style="font-size: 9px; margin-bottom: 10px;">
+				Offer is available for new trials only.
+				<br>Spa and salon appointments are available after trial.</p>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}

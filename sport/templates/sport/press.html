@@ -1,0 +1,63 @@
+{% extends "sport/layout.html" %}
+
+{% block body %}
+<div class="full-image">
+	{% load static %}
+	<img src="{% static 'press-page-desktop.jpg' %}" class="full-image">
+</div>
+
+<div class="explanation2">
+	<h1 class="big-title">Press Room</h1>
+	<h4 style="line-height: 2;">
+		FitFlex is a monthly subscription service providing access
+		<br>to the world’s largest network of boutique fitness studios and gyms.
+	</h4>
+	<br>
+</div>
+
+<div class="explanation2">
+	<h1 class="big-title">What People Are Saying</h1>
+	<div class="icon-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+		<div>
+			{% load static %}
+			<img src="{% static '01_pull-quote_New-York-Times-1.png' %}">
+			<h5 style="margin-top:20px;">The New York Times Corner Office</h5>
+		</div>
+		<div>
+			{% load static %}
+			<img src="{% static '01_pull-quote_New-York-Times-2.png' %}">
+			<h5 style="margin-top:20px;">Fitness Has Exploded Into A Nearly $100 Billion Global Industrye</h5>
+		</div>
+		<div>
+			{% load static %}
+			<img src="{% static '01_pull-quote_New-York-Times-3.png' %}">
+			<h5 style="margin-top:20px;">We Tried It: Getting Ready for an Awards Show Like a Celeb</h5>
+		</div>
+
+		<div>
+			{% load static %}
+			<img src="{% static '01_pull-quote_New-York-Times-4.png' %}">
+			<h5 style="margin-top:20px;">FitFlex Expands Into Corporate Wellness, Partnering With Google, Gatorade, And Morgan Stanley</h5>
+		</div>
+		<div>
+			{% load static %}
+			<img src="{% static '01_pull-quote_New-York-Times-5.png' %}">
+			<h5 style="margin-top:20px;">FitFlex' New Features Are All Focused On Wellness & Self Care & It Sounds So Awesome</h5>
+		</div>
+		<div>
+			{% load static %}
+			<img src="{% static '01_pull-quote_New-York-Times.png' %}">
+			<h5 style="margin-top:20px;">How FitFlex Helped Me Recover From An Awful Breakup</h5>
+		</div>
+	</div>
+
+</div>
+
+<a class="try-button-big" href="{% url 'press' %}" style="text-decoration:none;">Download media kit</a>
+<br>
+<br>
+<br>
+
+
+{% include 'sport/bottombar.html' %}
+{% endblock %}

@@ -1,0 +1,863 @@
+{% extends "sport/layout.html" %}
+
+
+{% block body %}
+
+
+    <!-- ----- ----- ----- SEARCH FOR CLASSES ----- ----- ----- -->
+    <div class="main-box" id="class-search">
+        <div class="half" id="map">
+        </div>
+
+        <div class="half" id="class-list">
+            <h3>Available classes</h3>
+            {% for class in classes %}
+            <div class="class-info">
+                <div>
+                    <h5>{{class.get_hour}}</h5>
+                    <h6>{{class.duration}} min</h6>
+                </div>
+                <div>
+                    <h4>{{class.name}}</h4>
+                    <h6 style="font-weight: 400;">{{class.get_class_rating}} <i class="fa-solid fa-star"></i> {{class.get_ratings_amount}}</h6>
+                </div>
+                <div>
+                    <h5>{{class.studio_name}}</h5>
+                    <h6>{{class.address}}</h6>
+                </div>
+                <div>
+                    <button class="sign-up-button" id="class-details-button" onclick="makeClassDetailsVisible({{class.id}})">
+                        See details
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- ----- ----- ----- CLASS DETAILS ----- ----- ----- -->
+
+    <div class="main-box" id="class-details">
+        <div class="half" id="class-details-half1">
+
+        </div>
+        <div class="half" id="class-details-half2">
+
+        </div>
+
+    </div>
+
+<!-- ----- ----- ----- EDIT PROFILE ----- ----- ----- -->
+
+<div class="main-box" id="edit-profile">
+    <!-- Profile overview -->
+    <div class="half">
+        <div class="profile-menu">
+            <div class="profile-menu-div">
+                <img src="{{user.profile_photo.url}}" class="profile-picture" alt="profile picture">
+                <button class="edit-profile-button" onclick="makeEditProfileVisible()">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <br>
+                <h4>{{user.first_name}} {{user.last_name}}</h4>
+                <h6>@{{user.username}}</h6>
+                <h5>
+                    <i class="fa-solid fa-location-dot"></i>
+                    {{user.get_city_display}}, PL
+                </h5>
+                <br>
+
+                <div style="width:100%; display:flex; flex-direction:row; justify-content:space-around;">
+                    <div class="small-middle">
+                        <button onclick ="seeCreditsPanel()" class="simple">
+                            <h6>Credits<br>left</h6>
+                            <h5>{{user.get_number_credits}}</h5>
+                        </button>
+                    </div>
+                    <div class="small-middle">
+                        <button onclick="makeClassesListVisible()" class="simple">
+                            <h6>Classes<br>taken</h6>
+                            <h5>{{user.get_number_classes_taken}}</h5>
+                        </button>
+                    </div>
+                    <div class="small-middle">
+                        <button onclick="makeClassesListVisible()" class="simple">
+                            <h6>Studios<br>visited</h6>
+                            <h5>{{user.get_number_studios}}</h5>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-menu-div">
+                <div class="small-middle">
+                    <button class="simple" onclick="makeProfileCalendarVisible()">
+                        <i class="fa-solid fa-calendar"></i>
+                        <h5>Your classes</h5>
+                    </a>
+                </div>
+                <div class="small-middle">
+                    <a href="{% url 'index' %}" id="class-search-button" class="standard_a">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h5>Find classes</h5>
+                    </a>
+                </div>
+            </div>
+            <div class="profile-menu-div">
+                <a href="{% url 'credits' %}" class="standard_a">How FlexFit works</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit info -->
+    <div class="half second">
+        <div class="calendar-heading-div">
+            <h3>Edit your profile information</h3>
+        </div>
+        <div class="edit-information-div">
+            <form action="{% url 'edit_profile_data' %}" method="post">
+				{% csrf_token %}
+				<div class="form-group">
+                    <label class="edit-info-label" for="first_name">First name:</label>
+					<input autofocus class="edit_data_from" type="text" name="first_name" value="{{request.user.first_name}}">
+
+                    <label class="edit-info-label" for="last_name">Last name:</label>
+                    <input class="edit_data_from" type="text" name="last_name" value="{{request.user.last_name}}">
+
+                    <label class="edit-info-label" for="email">Email address:</label>
+                    <input class="edit_data_from" type="text" name="email" value="{{request.user.email}}">
+
+                    <label class="edit-info-label" for="city">City:</label>
+                    <input class="edit_data_from" type="text" name="city" value="{{request.user.get_city_display}}">
+
+                    <label class="edit-info-label" for="profile_photo">Profile photo:</label>
+                    <input class="edit_data_file" type="file" id="formFile" name="profile_photo" id="profile_photo">
+                    <div style="width:100%; grid-column: 1/3; display:flex; align-items:center; justify-content:center;">
+					    <input class="login-button" type="submit" value="Save edited information">
+                    </div>
+				</div>
+			</form>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<!-- ----- ----- ----- PROFILE CALENDAR ----- ----- ----- -->
+
+<div class="main-box" id="profile-calendar">
+    <!-- Profile overview -->
+    <div class="half">
+        <div class="profile-menu">
+            <div class="profile-menu-div">
+                <img src="{{user.profile_photo.url}}" class="profile-picture" alt="profile picture">
+                <button class="edit-profile-button" onclick="makeEditProfileVisible()">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <br>
+                <h4>{{user.first_name}} {{user.last_name}}</h4>
+                <h6>@{{user.username}}</h6>
+                <h5>
+                    <i class="fa-solid fa-location-dot"></i>
+                    {{user.get_city_display}}, PL
+                </h5>
+                <br>
+
+                <div style="width:100%; display:flex; flex-direction:row; justify-content:space-around;">
+                    <div class="small-middle">
+                        <button onclick ="seeCreditsPanel()" class="simple">
+                            <h6>Credits<br>left</h6>
+                            <h5>{{user.get_number_credits}}</h5>
+                        </button>
+                    </div>
+                    <div class="small-middle">
+                        <button onclick="makeClassesListVisible()" class="simple">
+                            <h6>Classes<br>taken</h6>
+                            <h5>{{user.get_number_classes_taken}}</h5>
+                        </button>
+                    </div>
+                    <div class="small-middle">
+                        <button onclick="makeClassesListVisible()" class="simple">
+                            <h6>Studios<br>visited</h6>
+                            <h5>{{user.get_number_studios}}</h5>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-menu-div">
+                <div class="small-middle">
+                    <button class="simple" onclick="makeEditProfileVisible()">
+                        <i class="fa-solid fa-pen"></i>
+                        <h5>Edit profile</h5>
+                    </button>
+                </div>
+                <div class="small-middle">
+                    <a href="{% url 'index' %}" id="class-search-button" class="standard_a">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h5>Find classes</h5>
+                    </a>
+                </div>
+            </div>
+            <div class="profile-menu-div">
+                <a href="{% url 'credits' %}" class="standard_a">How FlexFit works</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calendar -->
+    <div class="half second">
+        <div class="calendar-heading-div">
+            <h3>Your classes</h3>
+            <div style="display: flex; flex-direction: row; gap: 8px;">
+                <button class="simple-disactivated" onclick="makeClassesListVisible()">
+                    <p>list</p>
+                </button>
+                <button class="simple" onclick="makeProfileCalendarVisible()">
+                    <p>month</p>
+                </button>
+            </div>
+        </div>
+
+        <div class="calendar" id="calendar">
+            <div class="calendar-title">
+                <button class="small-button" id="previous-month-button">
+                    <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <h3 id="month-name">{{ month_name }}</h3>
+                <h3 id="year-number">{{ year_number }}</h3>
+                <button class="small-button" id="next-month-button">
+                    <i class="fa-solid fa-caret-right"></i>
+                </button>
+            </div>
+            <div class="calendar-days">
+                <!-- days of the week -->
+                <div class="day-name"> Mon </div>
+                <div class="day-name"> Tue </div>
+                <div class="day-name"> Wed </div>
+                <div class="day-name"> Thu </div>
+                <div class="day-name"> Fri </div>
+                <div class="day-name"> Sat </div>
+                <div class="day-name"> Sun </div>
+                <!-- previous month days -->
+                {% for i in previous_days_list %}
+                <div class="day2">{{i}}</div>
+                {% endfor %}
+                <!-- current month days -->
+                {% for i in days_in_month_list %}
+                {% if i == day_number %}
+                <div class="today" id="{{i}}">
+                    <button class="simple" onclick="showClassesForTheDay({{i}})">
+                    {{i}}
+                    {% if i in days_with_classes %}
+                    <i class="fa-solid fa-circle" style="font-size:0.4rem; color:#7eda64;"></i>
+                    {% else %}
+                    <i class="fa-regular fa-circle" style="font-size:0.4rem; color: #818181;"></i>
+                    {% endif %}
+                    </button>
+                </div>
+                {% else %}
+                <div class="day" id="{{i}}">
+                    <button class="simple" onclick="showClassesForTheDay({{i}})">
+                    {{i}}
+                    {% if i in days_with_classes %}
+                    <i class="fa-solid fa-circle" style="font-size:0.4rem; color:#7eda64;"></i>
+                    {% else %}
+                    <i class="fa-regular fa-circle" style="font-size:0.4rem; color: #818181;"></i>
+                    {% endif %}
+                    </button>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <!-- future month days -->
+                {% for i in future_days_list %}
+                <div class="day2">{{i}}</div>
+                {% endfor %}
+            </div>
+            <br>
+            <!-- classes that day -->
+
+        <div class="class-info-calendar" id="class-info-calendar">
+            <h5>You haven't signed up for any classes for this day.</h5>
+        </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- ----- ----- ----- LIST OF CLASSES ----- ----- ----- -->
+
+<div class="main-box" id="classes_list">
+    <!-- Profile overview -->
+    <div class="half">
+        <div class="profile-menu">
+            <div class="profile-menu-div">
+                <img src="{{user.profile_photo.url}}" class="profile-picture" alt="profile picture">
+                <button class="edit-profile-button" onclick="makeEditProfileVisible()">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <br>
+                <h4>{{user.first_name}} {{user.last_name}}</h4>
+                <h6>@{{user.username}}</h6>
+                <h5>
+                    <i class="fa-solid fa-location-dot"></i>
+                    {{user.get_city_display}}, PL
+                </h5>
+                <br>
+
+                <div style="width:100%; display:flex; flex-direction:row; justify-content:space-around;">
+                    <div class="small-middle">
+                        <button onclick ="seeCreditsPanel()" class="simple">
+                            <h6>Credits<br>left</h6>
+                            <h5>{{user.get_number_credits}}</h5>
+                        </button>
+                    </div>
+                    <div class="small-middle">
+                        <button onclick="makeClassesListVisible()" class="simple">
+                            <h6>Classes<br>taken</h6>
+                            <h5>{{user.get_number_classes_taken}}</h5>
+                        </button>
+                    </div>
+                    <div class="small-middle">
+                        <button onclick="makeClassesListVisible()" class="simple">
+                            <h6>Studios<br>visited</h6>
+                            <h5>{{user.get_number_studios}}</h5>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-menu-div">
+                <div class="small-middle">
+                    <button class="simple" onclick="makeEditProfileVisible()">
+                        <i class="fa-solid fa-pen"></i>
+                        <h5>Edit profile</h5>
+                    </button>
+                </div>
+                <div class="small-middle">
+                    <a href="{% url 'index' %}" class="standard_a" id="class-search-button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h5>Find classes</h5>
+                    </a>
+                </div>
+            </div>
+            <div class="profile-menu-div">
+                <a href="{% url 'credits' %}" class="standard_a">How FlexFit works</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- List of one's classes -->
+    <div class="half second">
+        <div class="calendar-heading-div">
+            <h3>Your classes</h3>
+            <div style="display: flex; flex-direction: row; gap: 8px;">
+                <button class="simple" onclick="makeClassesListVisible()">
+                    <p>list</p>
+                </button>
+                <button class="simple-disactivated" id="month_button" onclick="makeProfileCalendarVisible()">
+                    <p>month</p>
+                </button>
+            </div>
+        </div>
+
+        <div class="list" id="list">
+
+            <!-- FUTURE CLASSES -->
+            <h4 style="width:100%;justify-self: start;">Upcoming classes</h4>
+
+            {% for i in user_classes %}
+
+                {% if i.get_date_simple > now_date_for_comparison %}
+                <div class="class-info-calendar" id="class-info-calendar">
+                    <div>
+                        <h5>{{i.get_hour}}</h5>
+                        <h6>{{i.duration}} min</h6>
+                    </div>
+                    <div>
+                        <h4>{{i.name}}</h4>
+                        <h6 style="font-weight: 400;">
+                            {{i.get_class_rating}}
+                            <i class="fa-solid fa-star"></i>
+                        </h6>
+                    </div>
+                    <div>
+                        <h5>{{i.studio.name}}</h5>
+                        <h6>{{i.address}}</h6>
+                    </div>
+                    <div>
+                        <button class="sign-up-button" id="class-details-button">See details</button>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+            <!-- message if there are no future classes -->
+            {% if user.get_number_classes_upcoming == 0 %}
+            <p style="width:100%;justify-self: start; color:grey;">
+                There aren't any upcoming classes.
+                <a href="{% url 'index' %}" style="color:grey">Search</a>
+                classes to sign up.
+            </p>
+            {% endif %}
+
+            <!-- PAST CLASSES -->
+            <h4 style="width:100%;justify-self: start;">Past classes</h4>
+            {% for i in user_classes %}
+                {% if i.get_date_simple < now_date_for_comparison %}
+                <div class="class-info-calendar" id="class-info-calendar" style="border-color:grey;">
+                    <div>
+                        <h5>{{i.get_hour}}</h5>
+                        <h6>{{i.duration}} min</h6>
+                    </div>
+                    <div>
+                        <h4>{{i.name}}</h4>
+                        <h6 style="font-weight: 400;">
+                            {{i.get_class_rating}}
+                            <i class="fa-solid fa-star"></i>
+                        </h6>
+                    </div>
+                    <div>
+                        <h5>{{i.studio.name}}</h5>
+                        <h6>{{i.address}}</h6>
+                    </div>
+                    <div>
+                        <button class="sign-up-button" id="add-review-button" onclick="makeAddReviewPanelVisible({{i.id}})">Add review</button>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+
+            <!-- message if there are no past classes -->
+            {% if user.get_number_classes_taken == 0 %}
+            <p style="width:100%;justify-self: start; color:grey;">
+                There aren't any past classes.
+                <a href="{% url 'index' %}" style="color:grey">Search</a>
+                classes to sign up.
+            </p>
+            {% endif %}
+
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<!-- ----- ----- ----- ADD A REVIEW PANEL ----- ----- ----- -->
+
+<div class="main-box" id="review-panel">
+    <!-- Profile overview -->
+    <div class="half" style="width: 80%; margin-right: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
+        <div class="profile-menu">
+            <div class="profile-menu-div">
+                <img src="{{user.profile_photo.url}}" class="profile-picture" alt="profile picture">
+                <button class="edit-profile-button" onclick="makeEditProfileVisible()">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <br>
+                <h4>{{user.first_name}} {{user.last_name}}</h4>
+                <h6>@{{user.username}}</h6>
+                <h5>
+                    <i class="fa-solid fa-location-dot"></i>
+                    {{user.get_city_display}}, PL
+                </h5>
+                <br>
+
+                <div style="width:100%; display:flex; flex-direction:row; justify-content:space-around;">
+                    <div class="small-middle">
+                        <button onclick ="seeCreditsPanel()" class="simple">
+                            <h6>Credits<br>left</h6>
+                            <h5>{{user.get_number_credits}}</h5>
+                        </button>
+                    </div>
+                    <div class="small-middle">
+                        <button onclick="makeClassesListVisible()" class="simple">
+                            <h6>Classes<br>taken</h6>
+                            <h5>{{user.get_number_classes_taken}}</h5>
+                        </button>
+                    </div>
+                    <div class="small-middle">
+                        <button onclick="makeClassesListVisible()" class="simple">
+                            <h6>Studios<br>visited</h6>
+                            <h5>{{user.get_number_studios}}</h5>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-menu-div">
+                <div class="small-middle">
+                    <button class="simple" onclick="makeEditProfileVisible()">
+                        <i class="fa-solid fa-pen"></i>
+                        <h5>Edit profile</h5>
+                    </button>
+                </div>
+                <div class="small-middle">
+                    <a href="{% url 'index' %}" id="class-search-button" class="standard_a">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h5>Find classes</h5>
+                    </a>
+                </div>
+            </div>
+            <div class="profile-menu-div">
+                <a href="{% url 'credits' %}" class="standard_a">How FlexFit works</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adding review panel -->
+    <div class="half" style="margin-right: 30px; border-top-left-radius: 0px; border-bottom-left-radius: 0px; padding: 20px; overflow-y: clip;">
+        <div class="calendar-heading-div">
+            <h3>Add a review</h3>
+        </div>
+
+        <div class="calendar" id="review_details">
+            <div style="width: 100%; padding: 50px 20px;">
+                <p>Hi, thanks for taking the class! Would you like to leave a review?</p>
+
+                <form action="{% url 'save_review' %}" method="post" style="width:100%; padding: 0px; margin:0px;">
+                    {% csrf_token %}
+                    <div class="form-group-review">
+                        <label class="edit-info-label" for="description">Your review:</label>
+                        <textarea autofocus name="description" class="edit_data_from" rows="7" cols="10">Awesome!</textarea>
+
+                        <label class="edit-info-label" for="rate">Score 0-5:</label>
+                        <input class="edit_data_from" type="number" name="rate" min="0" max="5">
+
+                        <div style="width:100%; grid-column: 1/3; display:flex; align-items:center; justify-content:center;">
+                            <input class="login-button" type="submit" value="Submit the review" id="class_review_submit_button">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ----- ----- ----- CREDITS SECTION ----- ----- ----- -->
+
+<div class="main-box" id="credits-panel">
+    <!-- Profile overview -->
+    <div class="half">
+        <div class="profile-menu">
+            <div class="profile-menu-div">
+                <img src="{{user.profile_photo.url}}" class="profile-picture" alt="profile picture">
+                <button class="edit-profile-button" onclick="makeEditProfileVisible()">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <br>
+                <h4>{{user.first_name}} {{user.last_name}}</h4>
+                <h6>@{{user.username}}</h6>
+                <h5>
+                    <i class="fa-solid fa-location-dot"></i>
+                    {{user.get_city_display}}, PL
+                </h5>
+                <br>
+
+                <div style="width:100%; display:flex; flex-direction:row; justify-content:space-around;">
+                    <div class="small-middle">
+                        <button onclick ="seeCreditsPanel()" class="simple">
+                            <h6>Credits<br>left</h6>
+                            <h5>{{user.get_number_credits}}</h5>
+                        </button>
+                    </div>
+                    <div class="small-middle">
+                        <button onclick="makeClassesListVisible()" class="simple">
+                            <h6>Classes<br>taken</h6>
+                            <h5>{{user.get_number_classes_taken}}</h5>
+                        </button>
+                    </div>
+                    <div class="small-middle">
+                        <button onclick="makeClassesListVisible()" class="simple">
+                            <h6>Studios<br>visited</h6>
+                            <h5>{{user.get_number_studios}}</h5>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-menu-div">
+                <div class="small-middle">
+                    <button class="simple" onclick="makeEditProfileVisible()">
+                        <i class="fa-solid fa-pen"></i>
+                        <h5>Edit profile</h5>
+                    </button>
+                </div>
+                <div class="small-middle">
+                    <a href="{% url 'index' %}" id="class-search-button" class="standard_a">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h5>Find classes</h5>
+                    </a>
+                </div>
+            </div>
+            <div class="profile-menu-div">
+                <a href="{% url 'credits' %}" class="standard_a">How FlexFit works</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credits section -->
+    <div class="half second">
+        <div class="calendar-heading-div">
+            <h3>Your current plan</h3>
+        </div>
+
+        <div class="calendar" id="credits_details">
+            <div class="credits-details-01">
+                <p>Your current plan is displayed below. You can adjust your plan at any time.</p>
+                <br>
+                <!-- PLANS DISPLAY -->
+                <div class="credits-details-02">
+                    <div class="mockup-plan" style="background-color: rgba(218, 100, 171, 0.3); border: 0.5px solid white;" id="credits-plan-div">
+                        <div style="display:flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                            <h3 id="credits-title">{{user.get_plan_credits}} credits</h3>
+                            <span class="popup-number2" id="popup-info">Chosen</span>
+                        </div>
+                        <br>
+                        <h1 id="price">{{user.get_price}} pln/mo</h1>
+                    </div>
+                    <div style="justify-content:center; align-items:center; margin:auto;">
+                        <button class="simple-visible" onclick="showAddCreditsView()">
+                            <i class="fa-regular fa-square-plus" style="margin-right:5px;"></i>
+                            <h5>Add credits</h5>
+                        </button>
+                        <button class="simple-visible" onclick="showChangePlanView()" style="margin-top:15px;">
+                            <i class="fa-solid fa-repeat" style="margin-right:5px;"></i>
+                            <h5>Change plan</h5>
+                        </button>
+                    </div>
+
+                </div>
+                <br>
+                <!-- Learning more about credits-->
+                <p style="color:grey;">FlexFit credits allow you to book at thousands of studios,
+                    gyms, salons & spas. Use them however you like in order to
+                    create a personalized fitness and wellness routine.</p>
+
+                <p style="color:grey;">
+                    Learn more about credits
+		            <a href="{% url 'credits' %}" class="standard_a">here</a>.
+                </p>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+<!-- ----- ----- ----- ADD CREDITS SECTION ----- ----- ----- -->
+
+<div class="main-box" id="add-credits-panel">
+    <!-- Profile overview -->
+    <div class="half">
+        <div class="profile-menu">
+            <div class="profile-menu-div">
+                <img src="{{user.profile_photo.url}}" class="profile-picture" alt="profile picture">
+                <button class="edit-profile-button" onclick="makeEditProfileVisible()">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <br>
+                <h4>{{user.first_name}} {{user.last_name}}</h4>
+                <h6>@{{user.username}}</h6>
+                <h5>
+                    <i class="fa-solid fa-location-dot"></i>
+                    {{user.get_city_display}}, PL
+                </h5>
+                <br>
+
+                <div style="width:100%; display:flex; flex-direction:row; justify-content:space-around;">
+                    <div class="small-middle">
+                        <button onclick ="seeCreditsPanel()" class="simple">
+                            <h6>Credits<br>left</h6>
+                            <h5>{{user.get_number_credits}}</h5>
+                        </button>
+                    </div>
+                    <div class="small-middle">
+                        <button onclick="makeClassesListVisible()" class="simple">
+                            <h6>Classes<br>taken</h6>
+                            <h5>{{user.get_number_classes_taken}}</h5>
+                        </button>
+                    </div>
+                    <div class="small-middle">
+                        <button onclick="makeClassesListVisible()" class="simple">
+                            <h6>Studios<br>visited</h6>
+                            <h5>{{user.get_number_studios}}</h5>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-menu-div">
+                <div class="small-middle">
+                    <button class="simple" onclick="makeEditProfileVisible()">
+                        <i class="fa-solid fa-pen"></i>
+                        <h5>Edit profile</h5>
+                    </button>
+                </div>
+                <div class="small-middle">
+                    <a href="{% url 'index' %}" id="class-search-button" class="standard_a">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h5>Find classes</h5>
+                    </a>
+                </div>
+            </div>
+            <div class="profile-menu-div">
+                <a href="{% url 'credits' %}" class="standard_a">How FlexFit works</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add credits section -->
+    <div class="half second">
+        <div class="calendar-heading-div">
+            <h3>Add more credits</h3>
+        </div>
+
+        <div class="calendar">
+            Add more credits
+        </div>
+    </div>
+
+</div>
+
+
+<!-- ----- ----- ----- CHANGE PLAN ----- ----- ----- -->
+
+<div class="main-box" id="change-plan">
+    <!-- Profile overview -->
+    <div class="half">
+        <div class="profile-menu">
+            <div class="profile-menu-div">
+                <img src="{{user.profile_photo.url}}" class="profile-picture" alt="profile picture">
+                <button class="edit-profile-button" onclick="makeEditProfileVisible()">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <br>
+                <h4>{{user.first_name}} {{user.last_name}}</h4>
+                <h6>@{{user.username}}</h6>
+                <h5>
+                    <i class="fa-solid fa-location-dot"></i>
+                    {{user.get_city_display}}, PL
+                </h5>
+                <br>
+
+                <div style="width:100%; display:flex; flex-direction:row; justify-content:space-around;">
+                    <div class="small-middle">
+                        <button onclick ="seeCreditsPanel()" class="simple">
+                            <h6>Credits<br>left</h6>
+                            <h5>{{user.get_number_credits}}</h5>
+                        </button>
+                    </div>
+                    <div class="small-middle">
+                        <button onclick="makeClassesListVisible()" class="simple">
+                            <h6>Classes<br>taken</h6>
+                            <h5>{{user.get_number_classes_taken}}</h5>
+                        </button>
+                    </div>
+                    <div class="small-middle">
+                        <button onclick="makeClassesListVisible()" class="simple">
+                            <h6>Studios<br>visited</h6>
+                            <h5>{{user.get_number_studios}}</h5>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-menu-div">
+                <div class="small-middle">
+                    <button class="simple" onclick="makeEditProfileVisible()">
+                        <i class="fa-solid fa-pen"></i>
+                        <h5>Edit profile</h5>
+                    </button>
+                </div>
+                <div class="small-middle">
+                    <a href="{% url 'index' %}" id="class-search-button" class="standard_a">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h5>Find classes</h5>
+                    </a>
+                </div>
+            </div>
+            <div class="profile-menu-div">
+                <a href="{% url 'credits' %}" class="standard_a">How FlexFit works</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change plan section -->
+    <div class="half second">
+        <div class="calendar-heading-div">
+            <h3>Change your monthly plan</h3>
+        </div>
+
+        <!-- Plans overview -->
+        <div class="calendar">
+            <div class="change-plan-in-profile">
+                <!-- Descr -->
+                <h5 style="margin: 20px 0px;">
+                    Fitness and wellness aren’t one-size-fits-all,
+                    and neither are our memberships.
+                    Choose a plan that best fits your lifestyle.
+                </h5>
+
+                <!-- Plan 01 -->
+                <div class="available-plan" id="ch-plan1" onclick="popUpChangePlan('9 credits/mo')">
+                    <h4>FlexFit Try</h4>
+                    <br>
+                    <h5>9 credits - 39 pln/mo</h5>
+                </div>
+
+                <!-- Plan 02 -->
+                <div class="available-plan" id="ch-plan2" onclick="popUpChangePlan('25 credits/mo')">
+                    <h4>FlexFit Light</h4>
+                    <br>
+                    <h5>25 credits - 59 pln/mo</h5>
+                </div>
+
+                <!-- Plan 03 -->
+                <div class="available-plan" id="ch-plan3" onclick="popUpChangePlan('47 credits/mo')">
+                    <h4>FlexFit Casual</h4>
+                    <br>
+                    <h5>47 credits - 79 pln/mo</h5>
+                </div>
+
+                <!-- Plan 04 -->
+                <div class="available-plan" id="ch-plan4" onclick="popUpChangePlan('64 credits/mo')">
+                    <h4>FlexFit Plus</h4>
+                    <br>
+                    <h5>64 credits - 99 pln/mo</h5>
+                </div>
+
+                <!-- Plan 05 -->
+                <div class="available-plan" id="ch-plan5" onclick="popUpChangePlan('80 credits/mo')">
+                    <h4>FlexFit Pro</h4>
+                    <br>
+                    <h5>80 credits - 119 pln/mo</h5>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ----- ----- ----- END ----- ----- ----- -->
+
+</div>
+
+
+
+{% endblock %}
+
+{% block script %}
+{% load static %}
+    <script src="{% static 'sport/sport.js' %}"></script>
+    <script>
+        var csrftoken = '{{ csrf_token }}';
+    </script>
+{% endblock %}

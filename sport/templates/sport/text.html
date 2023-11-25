@@ -1,0 +1,11 @@
+{% extends "sport/layout.html" %}
+
+{% block body %}
+<!-- ----- ----- ----- TEXT ----- ----- ----- -->
+<div class="entry-text">
+	{{ entry|safe }}
+</div>
+
+{% include 'sport/bottombar.html' %}
+
+{% endblock %}

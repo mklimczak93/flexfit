@@ -1,0 +1,142 @@
+{% extends "sport/layout.html" %}
+
+{% block body %}
+<div class="explanation3">
+	<div style="padding: 100px; width: 100%;">
+		<h1 class="big-title">FitFlex is everywhere</h1>
+		<h4 style="line-height: 2;">
+			We're in over 2,500 cities around the globe, and growing fast.
+			<br>Join FitFlex, and choose from over 5 million classes in everything
+			<br>from yoga, pilates, boxing, cardio, and more.
+		</h4>
+		<br>
+		<div style="width:100%; display: flex; flex-direction: row;">
+			<a class="try-button-big" href="{% url 'register' %}" style="text-decoration:none; display: block;">Get started</a>
+			<a class="try-button-big2" href="{% url 'index' %}" style="text-decoration:none; display: block;">Find studios nearby</a>
+		</div>
+		<br>
+	</div>
+	<div style="width: 100%;">
+		{% load static %}
+		<img src="{% static 'hero_locations_01.jpg' %}" width="100%">
+	</div>
+</div>
+
+<div class="explanation2" style="padding: 200px 50px;">
+	<h1 class="big-title">Locations</h1>
+		<h4 style="line-height: 2;">
+			Sign up in one place with one price, and use your membership anywhere.
+			<br>Download the app, and get suggestions on top fitness classes near you.
+			<br>Don't see classes in your area? We'll be there soon!
+		</h4>
+	<div class="locations-grid">
+		<div>
+			<h3>Austria</h3>
+			<p>Graz</p>
+			<p>Linz</p>
+			<p>Vienna</p>
+		</div>
+		<div>
+			<h3>Denmark</h3>
+			<p>Aarhus</p>
+			<p>Copenhagen</p>
+		</div>
+		<div>
+			<h3>Finland</h3>
+			<p>Helsinki</p>
+			<p>Tampere</p>
+		</div>
+		<div>
+			<h3>France</h3>
+			<p>Lyon</p>
+			<p>Marseille</p>
+			<p>Paris</p>
+		</div>
+		<div>
+			<h3>Germany</h3>
+			<p>Berlin</p>
+			<p>Cologne</p>
+			<p>Hamburg</p>
+			<p>Munich</p>
+		</div>
+		<div>
+			<h3>Italy</h3>
+			<p>Milan</p>
+			<p>Rome</p>
+			<p>Naples</p>
+			<p>Turin</p>
+		</div>
+		<div>
+			<h3>Ireland</h3>
+			<p>Cork</p>
+			<p>Dublin</p>
+		</div>
+		<div>
+			<h3>Netherlands</h3>
+			<p>Amsterdam</p>
+			<p>The Hague</p>
+			<p>Rotterdam</p>
+			<p>Utrecht</p>
+		</div>
+		<div>
+			<h3>Norway</h3>
+			<p>Bergen</p>
+			<p>Oslo</p>
+		</div>
+		<div>
+			<h3>Poland</h3>
+			<p>Kraków</p>
+			<p>Łódź</p>
+			<p>Warszawa</p>
+			<p>Wrocław</p>
+		</div>
+		<div>
+			<h3>Portugal</h3>
+			<p>Lisbon</p>
+			<p>	Porto</p>
+		</div>
+		<div>
+			<h3>Spain</h3>
+			<p>Barcelona</p>
+			<p>Madrid</p>
+			<p>Valencia</p>
+		</div>
+		<div>
+			<h3>Sweden</h3>
+			<p>Gothenburg</p>
+			<p>Malmö</p>
+			<p>Stockholm</p>
+		</div>
+		<div>
+			<h3>Switzerland</h3>
+			<p>Bern</p>
+			<p>Geneva</p>
+			<p>Zurich</p>
+		</div>
+		<div>
+			<h3>United Kingdom</h3>
+			<p>Brighton</p>
+			<p>Bristol</p>
+			<p>Edinburgh</p>
+			<p>London</p>
+			<p>Manchester</p>
+		</div>
+	</div>
+</div>
+
+<br>
+<div class="explanation2" style="margin-top:0px; padding-top:0px;">
+	<h1 class="big-title">Get started today</h1>
+	<h4 style="line-height: 2;">
+		Join today, and try thousands of fitness, beauty, spa & wellness options near you.
+	</h4>
+	<br>
+<a class="try-button-big" href="{% url 'register' %}" style="text-decoration:none;">Get started</a>
+<br>
+<br>
+<br>
+<br>
+</div>
+
+{% include 'sport/bottombar.html' %}
+{% endblock %}

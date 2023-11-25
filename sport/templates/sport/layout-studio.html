@@ -1,0 +1,152 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Flexfit{% endblock %}</title>
+        <!-- responsiveness -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- popper.js -->
+        <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+
+        <!-- CSS -->
+        <link href="{% static 'sport/styles.css' %}" rel="stylesheet">
+
+        <!-- icons -->
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+        <script src="https://kit.fontawesome.com/95597707ec.js" crossorigin="anonymous"></script>
+
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700;800&display=swap" rel="stylesheet">
+
+        <!-- tomtom maps -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.18.0/maps/maps.css"
+            />
+        <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.18.0/maps/maps-web.min.js"></script>
+
+
+         <!-- add icon link-->
+         {% load static %}
+         <link rel="icon"
+         type="image/x-icon"
+         href="{% static 'flexfit_logo_02.png' %}"
+         style="background-color: black;">
+
+
+        {% block script %}
+        {% endblock %}
+
+    </head>
+
+
+
+    <body>
+		<div class="container2" id="container2">
+            <!-- ----- ----- ----- NAVBAR ----- ----- ----- -->
+            <nav class="navbar-custom" >
+                <a class="navbar-logo" href="{% url 'index_studio' %}">
+                    {% load static %}
+                    <img src="{% static 'fitflex_logo_03.png' %}" width="150" height="25" alt="flexfit logo">
+                </a>
+                <a class="toggle-button">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
+                <div class="navbar-links">
+                    <ul>
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="{% url 'partner-studio' %}" id="class-search-button">Partner information<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="{% url 'plans-studio' %}">Plans</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="{% url 'credits-studio' %}">How credits work</a>
+                        </li>
+                        <!-- links only visible on small screen, otherwise in dropdown-->
+                        {% if user.is_authenticated %}
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="#" onclick="makeProfileCalendarVisible()">View profile</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                        {% else %}
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="{% url 'login' %}">Log In</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                        {% endif %}
+                        <!-- dropdown for large screens -->
+                        <li>
+                            <div class="dropdown">
+                                {% if user.is_authenticated %}
+                                <button class="login-circle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ user.get_letter }}
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <button class="dropdown-item" onclick="makeStudioOverviewVisible()">
+                                        <i class="fa-solid fa-user"></i>
+                                        <p>View studio profile</p>
+                                        <span>></span>
+                                    </button>
+                                    <a class="dropdown-item" href="{% url 'logout' %}" style="transform: scale(1, 1)">
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                        <p>Log Out</p>
+                                        <span>></span>
+                                    </a>
+                                </div>
+                                {% else %}
+                                <button class="login-circle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {% load static %}
+                                    <img src="{% static 'fitflex_onlylogo_white_transp.png' %}" width="20" alt="flexfit logo">
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{% url 'login' %}">
+                                        <i class="fa-solid fa-user"></i>
+                                        <p>View profile</p>
+                                        <span>></span>
+                                    </a>
+                                    <a class="dropdown-item" href="{% url 'login' %}">
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                        <p>Log In</p>
+                                        <span>></span>
+                                    </a>
+                                    <a class="dropdown-item" href="{% url 'register' %}">
+                                        <i class="fa-solid fa-user-plus"></i>
+                                        <p>Register</p>
+                                        <span>></span>
+                                    </a>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- ----- ----- ----- CHANGING PART ----- ----- ----- -->
+
+            {% block body %}
+            {% endblock %}
+
+    </div>
+</body>
+
+
+
+</html>

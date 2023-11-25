@@ -1,0 +1,148 @@
+{% extends "sport/layout.html" %}
+
+{% block body %}
+
+<div class="full-image">
+	{% load static %}
+	<img src="{% static 'press-page-desktop.jpg' %}" class="full-image">
+</div>
+
+<div class="explanation2">
+	<h1 class="big-title">Help Center</h1>
+	<h4 style="line-height: 2;">
+		FitFlex is a monthly subscription service providing access
+		<br>to the world’s largest network of boutique fitness studios and gyms.
+	</h4>
+	<br>
+</div>
+
+<!-- FAQ -->
+
+<div class="accordion-main-div">
+	<h1 class="big-title" style="margin-bottom: 30px;">Common questions</h1>
+<div class="accordion" id="accordionFAQ">
+
+	<div class="accordion-item">
+	  <h2 class="accordion-header" id="headingOne">
+		<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			Where can I use my FitFlex credits?
+		</button>
+	  </h2>
+	  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+		<div class="accordion-body">
+			Short answer, thousands of places. Tap here to find classes and appointments at the best studios, salons and spas near you.
+		</div>
+	  </div>
+	</div>
+
+	<div class="accordion-item">
+	  <h2 class="accordion-header" id="headingTwo">
+		<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+			How can I save by booking through FitFlex?
+		</button>
+	  </h2>
+	  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+		<div class="accordion-body">
+			FitFlex members have access to special rates at the top studios, salons and spas. Not only can you save more with a FitFlex membership, you have the flexibility to use your credits where and how you want to.
+		</div>
+	  </div>
+	</div>
+
+	<div class="accordion-item">
+	  <h2 class="accordion-header" id="headingThree">
+		<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+			How do I know how much a class or appointment costs in credits?
+		</button>
+	  </h2>
+	  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+		<div class="accordion-body">
+			After signing up, you’ll be able to see the credit price for a class or appointment, which varies by things like popularity, time and reservation type.
+		</div>
+	  </div>
+	</div>
+
+	<div class="accordion-item">
+		<h2 class="accordion-header" id="headingFour">
+		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+			What if I run out of credits?
+		  </button>
+		</h2>
+		<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+		  <div class="accordion-body">
+			Good news, you can always add more! Just go to the “Add credits” tab in the app to purchase more and keep up your routine.
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="accordion-item">
+		<h2 class="accordion-header" id="headingFive">
+		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+			What if I don’t use all of my credits?
+		  </button>
+		</h2>
+		<div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+		  <div class="accordion-body">
+			Don’t sweat — your credits roll over when you are on a paid FitFlex membership!
+			Once you become a paying member of FitFlex, you can roll over up to the number of credits in your next month’s plan.
+			For example, if your next month’s plan includes 19 credits, you can roll over up to 19 credits into that month,
+			and they’ll appear in your account up to 48 hours after renewal.
+			Any additional credits you have will expire at the end of the month and if you decide to cancel,
+			all remaining credits will be forfeited on the last day of your membership.If you are on a trial,
+			you will have access to your free credits until your trial end date. After this date, any leftover credits from the trial will expire.
+			If you purchased any top-up credits or credit bundles during your trial, they will roll over into your next month.
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="accordion-item">
+		<h2 class="accordion-header" id="headingSix">
+		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+			What happens if I cancel a reservation?
+		  </button>
+		</h2>
+		<div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+		  <div class="accordion-body">
+			You’ll be able to see each reservation’s cancellation window when booking (it’s usually 12 hours).
+			If you cancel a reservation in time, we won’t charge you, and the credits you used to book will automatically be
+			returned to your account. If you cancel late, you’ll receive a late cancellation fee.
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="accordion-item">
+		<h2 class="accordion-header" id="headingSeven">
+		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+			What happens if I miss a reservation?
+		  </button>
+		</h2>
+		<div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+		  <div class="accordion-body">
+			If you miss a reservation without cancelling, you’ll get your credits back and be charged a missed reservation fee.
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="accordion-item">
+		<h2 class="accordion-header" id="headingEight">
+		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+			What is your membership cancellation policy, and how do I cancel?
+		  </button>
+		</h2>
+		<div id="collapsEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+		  <div class="accordion-body">
+			Although we’ll be sad to see you go, you’re easily able to cancel your membership at any time by following these steps.
+			You can also cancel your trial at any time, and we’ll remind you of your renewal terms 2 days before it ends.
+		  </div>
+		</div>
+	  </div>
+
+  </div>
+
+</div>
+
+
+<!-- BOTTOMBAR -->
+
+
+{% include 'sport/bottombar.html' %}
+{% endblock %}

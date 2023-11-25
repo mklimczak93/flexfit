@@ -1,0 +1,37 @@
+{% extends "sport/layout.html" %}
+
+{% block body %}
+
+
+<div class="full-image">
+	{% load static %}
+	<img src="{% static 'press-page-desktop.jpg' %}" class="full-image">
+</div>
+
+<div class="explanation2">
+	<h1 class="big-title">Invite your workout buddies to FitFlex for rewards</h1>
+	<h4 style="line-height: 2;">
+		Working out with your friends, family or coworkers on FitFlex is easy.
+		<br>Refer your workout buddies to FitFlex or invite them to class
+		<br>and get rewarded when they become a paying member.*
+	</h4>
+	<br>
+</div>
+
+<br>
+<button class="try-button-big">Learn more</button>
+<br>
+<br>
+<br>
+<br>
+<div style="width:80vh;">
+<p style="line-height: 2; font-size: 10px; color: #DFDFDF;">*Rewards are available in select locations only, and vary based on your location.
+	**Reward is available to active paying FitFlex members only and is credited to the sender’s account when the friend becomes a paying member after a free trial. The reward will be in the form of a one-time credit award or a one-time discount off your next month’s plan.
+	For terms & conditions, click here.</p>
+</div>
+<br>
+<br>
+<br>
+
+{% include 'sport/bottombar.html' %}
+{% endblock %}

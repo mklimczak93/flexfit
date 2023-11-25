@@ -1,0 +1,138 @@
+{% extends "sport/layout.html" %}
+
+{% block body %}
+
+<div class="explanation3" id="section1">
+	<div style="width: 100%;">
+		{% load static %}
+		<img src="{% static 'CRO_Homepage_Hero_Desktop.jpg' %}" width="100%">
+	</div>
+
+	<div style="padding: 10px 50px; display: flex; flex-direction:column; align-items:center; justify-content:center;">
+		<h3>Ready to start earning more?</h3>
+		<p>List your venue on FitFlex, and earn money for every reservation booked.</p>
+		<br>
+		<br>
+		<form action="{% url 'register_studio' %}" method="post">
+			{% csrf_token %}
+			<div class="partner-registration-form">
+				<div>
+					<label>Venue name</label>
+					<input autofocus class="partner-form" type="text" name="venue_name">
+				</div>
+				<div>
+					<label>City</label>
+					<br>
+					<select class="partner-form" id="studio_city" name="studio_city">
+						<option value="Warszawa">Warszawa</option>
+						<option value="Kraków">Kraków</option>
+						<option value="Łódź">Łódź</option>
+						<option value="Wrocław">Wrocław</option>
+					</select>
+				</div>
+				<div>
+					<label>First Name</label>
+					<input class="partner-form" type="text" name="first_name">
+				</div>
+				<div>
+					<label>Last Name</label>
+					<input class="partner-form" type="text" name="last_name">
+				</div>
+				<div>
+					<label>Business Type</label>
+					<select class="partner-form" id="business_type" name="business_type">
+						<option value="Warszawa">Yoga</option>
+						<option value="Kraków">Pilates</option>
+						<option value="Łódź">Crossfit</option>
+						<option value="Wrocław">Gym</option>
+						<option value="Wrocław">Others</option>
+					</select>
+				</div>
+				<div>
+					<label>Your e-mail</label>
+					<input class="partner-form" type="email" name="email">
+				</div>
+				<div>
+					<label>Password</label>
+					<br>
+					<input class="partner-form" type="password" name="password">
+				</div>
+				<div>
+					<label>Confirmation</label>
+					<br>
+					<input class="partner-form" type="password" name="confirmation">
+				</div>
+				<div id="partner-regist-form-button-div">
+					<input class="login-button" type="submit" value="Register">
+				</div>
+
+			</div>
+		</form>
+		<br>
+		<p style="font-size:14px; margin-bottom: 10px;">Looking for user account?</p>
+		<a class="standard_a" href="{% url 'login' %}">Log in here.</a>
+		<br>
+	</div>
+</div>
+<div class="explanation3" id="section2" style="padding: 100px; border-bottom: none;">
+	<div>
+		<h1>How it works?</h1>
+		<br>
+		<h3>Sign up online (in less than 10 minutes)</h3>
+		<p>Tell us about your business and get a sense for how much you could make on the platform.</p>
+		<br>
+		<h3>Add your available classes and appointments</h3>
+		<p>Tap into new audiences and reach thousands of ClassPass customers in your area. Leverage our Partner Portal to see how you’re performing.</p>
+		<br>
+		<h3>Get reservations, get paid</h3>
+		<p>SmartSpot, our intelligent spot management tool, will look at your schedule and real time data to dynamically price your unfilled spots to maximize your revenue.</p>
+		<br>
+	</div>
+	<div style="width: 100%;">
+		{% load static %}
+		<img src="{% static 'CRO_Homepage_HowItWorks.png' %}" width="100%">
+	</div>
+</div>
+
+<div class="explanation3" id="section3" style="padding: 100px; border-bottom: none;">
+	<div style="width: 100%;">
+		{% load static %}
+		<img src="{% static 'integration-photos3.png' %}" width="90%">
+	</div>
+	<div>
+		<h1>Easily integrate your booking system</h1>
+		<br>
+		<h2>Our one-stop solution helps you manage, optimize and expand your business. We seamlessly integrate with over 25 booking systems worldwide.</h2>
+		<br>
+		<ul>
+			<li>Easily sync your classes and availability into ClassPass</li>
+			<li>Optimize your revenue generated with ClassPass' SmartTools</li>
+			<li>Reduce the chance of overbooking</li>
+		</ul>
+	</div>
+</div>
+
+<div class="explanation2" id="section4">
+	<div style="margin-bottom: 3rem;">
+		<h1>Join a global network of top studios</h1>
+		<br>
+		<p>tudios of all sizes partner with ClassPass. Whether you’re an established studio or just starting out, you’ll be in good company.
+		<br>- Andy Stenzler, Co-Founder, Rumble</p>
+	</div>
+	<div style="width: 100%;">
+		{% load static %}
+		<img src="{% static 'Desktop Partner Logos3.png' %}" width="70%">
+	</div>
+</div>
+<div class="explanation2" id="section5">
+	<div>
+		<h1>Ready to get started?</h1>
+		<br>
+		<p>Grow your studio and livestream business by sharing your fitness and wellness experiences with ClassPass’ global audience.</p>
+	</div>
+	<br>
+	<a class="try-button-big" href="#section1" style="text-decoration:none;">Get started today</a>
+
+</div>
+{% include 'sport/bottombar.html' %}
+{% endblock %}

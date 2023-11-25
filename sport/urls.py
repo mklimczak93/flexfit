@@ -1,0 +1,41 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("", views.index, name="index"),
+	path("studio", views.index_studio, name="index_studio"),
+    path("login", views.login_view, name="login"),
+    path("partner_login", views.login_view_partner, name="partner-login"),
+    path("logout", views.logout_view, name="logout"),
+    path("register", views.register, name="register"),
+    path("register_studio", views.register_studio, name="register_studio"),
+    path("try", views.try_view, name="try"),
+    path("plans", views.plans_view, name="plans"),
+	path("plans-studio", views.plans_studio_view, name="plans-studio"),
+    path("credits", views.credits_view, name="credits"),
+	path("credits-studio", views.credits_studio_view, name="credits-studio"),
+    path("aboutus", views.aboutus_view, name="aboutus"),
+    path("careers", views.careers_view, name="careers"),
+    path("press", views.press_view, name="press"),
+    path("contactus", views.contactus_view, name="contactus"),
+    path("helpcenter", views.helpcenter_view, name="helpcenter"),
+    path("partner", views.partner_view, name="partner"),
+	path("partner-studio", views.partner_studio_view, name="partner-studio"),
+    path("referfriend", views.referfriend_view, name="referfriend"),
+    path("locations", views.locations_view, name="locations"),
+    path("sport/<str:title>", views.entry, name="entry"),
+    path("profile", views.view_profile, name="profile"),
+    path("edit_profile_data", views.edit_profile_data, name="edit_profile_data"),
+	path("add_review", views.add_review, name="add_review"),
+	path("save_review", views.save_review, name="save_review"),
+
+    # API Routes
+    path("show_classes_for_day", views.show_classes_for_day, name="show_classes_for_day"),
+    path("show_all_classes", views.show_all_classes, name="show_all_classes"),
+    path("show_chosen_class/<int:class_id>", views.show_chosen_class, name="show_chosen_class"),
+	path("class_signup", views.sign_up_for_class, name="sign_up_for_class"),
+	path("class_cancel", views.cancel_class, name="cancel_class"),
+	path("signed_up_classes_list", views.get_signed_up_classes_list, name="signed_up_classes_list"),
+	path("class_reviews/<int:class_id>", views.get_class_reviews, name="get_class_reviews"),
+	path("change_plan", views.change_plan, name="change_plan"),
+]

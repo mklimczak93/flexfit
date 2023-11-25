@@ -1,0 +1,40 @@
+{% extends "sport/layout.html" %}
+
+{% block body %}
+
+<div class="full-image">
+	{% load static %}
+	<img src="{% static 'press-page-desktop.jpg' %}" class="full-image">
+</div>
+
+<div class="explanation2">
+	<h1 class="big-title">Contact Us</h1>
+	<h4 style="line-height: 2;">
+		Fitflex is a monthly subscription service providing access
+		<br>to the world’s largest network of boutique fitness studios and gyms.
+	</h4>
+	<br>
+</div>
+
+<!-- FORM -->
+<h1 class="big-title">Contact Form</h1>
+<div >
+	<form action="{% url 'edit_profile_data' %}" method="post">
+		{% csrf_token %}
+		<div class="form-group">
+			<p>Email address associated with your account or where we should contact you</p>
+			<input class="edit_data_from" type="text" name="email">
+			<p>Subject</p>
+			<input class="edit_data_from" type="text" name="subject">
+			<p>Attachments</p>
+			<input class="edit_data_file" type="file" id="formFile" name="profile_photo" id="profile_photo">
+			<div style="width:100%; grid-column: 1/3; display:flex; align-items:center; justify-content:center;">
+				<input class="try-button-big" type="submit" value="Submit">
+			</div>
+		</div>
+	</form>
+
+</div>
+
+{% include 'sport/bottombar.html' %}
+{% endblock %}

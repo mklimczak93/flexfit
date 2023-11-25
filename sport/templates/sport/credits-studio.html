@@ -1,0 +1,277 @@
+{% extends "sport/layout-studio.html" %}
+
+{% block body %}
+
+<!-- ----- ----- ----- 1ST SECTION ----- ----- ----- -->
+<div class="explanation">
+	<h1 class="big-title">What are credits?</h1>
+	<br>
+	<h4 style="line-height: 2;">FlexFit credits allow you to book at thousands of studios,
+		<br>gyms, salons & spas. Use them however you like in order to
+		<br>create a personalized fitness and wellness routine.
+	</h4>
+	<br>
+	<a class="try-button-big" href="#section2" style="text-decoration:none;">How to use your credits?</a>
+</div>
+<br>
+
+<!-- ----- ----- ----- 2ND SECTION WITH EXAMPLES ----- ----- ----- -->
+<div class="explanation2" id="section2">
+	<br>
+	<h1 class="big-title">How to use your credits</h1>
+	<br>
+	<h4>
+		Here’s how some FlexFit members use their credits to create a routine that works for them.
+	</h4>
+	<br>
+	<!-- MOCKUP USERS -->
+	<div style="display:flex; flex-direction:row; justify-content:center; align-items:center; gap:20px;">
+	<button class="round-previous" id="plans-carousel-previous-button"> < </button>
+	<div class="mockup-users" id="tomek">
+		<!-- Tomek -->
+		<div class="mockup-user-example">
+			<div>
+				{% load static %}
+				<img src="{% static 'profile_mockup_01.JPG' %}" class="profile-picture" alt="profile picture">
+				<div style="display:flex; flex-direction: column; margin-left: 20px; text-align: left;">
+					<h3>6-credit plan</h3>
+					<h4>Tomek • Łódź</h4>
+				</div>
+			</div>
+			<div>
+				<p style="text-align: justify;">Tomek usually books a mental reset & gym session once a week. During a busy month, he rolls his credits over.</p>
+			</div>
+			<hr>
+			<div style="width: 100%; justify-content: space-between;">
+				<div>
+					<h5>Gym Time</h5>
+					<span class="popup-number">x3</span>
+				</div>
+				<div style="flex-direction:column;">
+					<h5>3 credits</h5>
+					<h6>1 credit each</h6>
+				</div>
+			</div>
+			<hr>
+			<div style="width: 100%; justify-content: space-between;">
+				<div>
+					<h5>Meditation</h5>
+					<span class="popup-number">x1</span>
+				</div>
+				<div style="flex-direction:column;">
+					<h5>3 credits</h5>
+				</div>
+			</div>
+		</div>
+
+		<!-- Kasia -->
+		<div class="mockup-user-example" id="kasia">
+			<div>
+				{% load static %}
+				<img src="{% static 'profile_mockup_02.JPG' %}" class="profile-picture" alt="profile picture">
+				<div style="display:flex; flex-direction: column; margin-left: 20px; text-align: left;">
+					<h3>25-credit plan</h3>
+					<h4>Kasia • Warszawa</h4>
+				</div>
+			</div>
+			<div>
+				<p style="text-align: justify;">Kasia recently found out she’s pregnant and uses FlexFit once or twice a week to stay active.</p>
+			</div>
+			<hr>
+			<div style="width: 100%; justify-content: space-between;">
+				<div>
+					<h5>Prenatal Yoga</h5>
+					<span class="popup-number">x2</span>
+				</div>
+				<div style="flex-direction:column;">
+					<h5>8 credits</h5>
+					<h6>4 credits each</h6>
+				</div>
+			</div>
+			<hr>
+			<div style="width: 100%; justify-content: space-between;">
+				<div>
+					<h5>Full Body Pilates</h5>
+					<span class="popup-number">x1</span>
+				</div>
+				<div style="flex-direction:column;">
+					<h5>10 credits</h5>
+				</div>
+			</div>
+			<hr>
+			<div style="width: 100%; justify-content: space-between;">
+				<div>
+					<h5>Meditation</h5>
+					<span class="popup-number">x1</span>
+				</div>
+				<div style="flex-direction:column;">
+					<h5>4 credits</h5>
+				</div>
+			</div>
+			<hr>
+			<div style="width: 100%; justify-content: space-between;">
+				<div>
+					<h5>Barre</h5>
+					<span class="popup-number">x1</span>
+				</div>
+				<div style="flex-direction:column;">
+					<h5>3 credits</h5>
+				</div>
+			</div>
+		</div>
+		<!-- Monika -->
+		<div class="mockup-user-example" id="monika">
+			<div>
+				{% load static %}
+				<img src="{% static 'profile_mockup_03.JPG' %}" class="profile-picture" alt="profile picture">
+				<div style="display:flex; flex-direction: column; margin-left: 20px; text-align: left;">
+					<h3>80-credit plan</h3>
+					<h4>Monika • Kraków</h4>
+				</div>
+			</div>
+			<div>
+				<p style="text-align: justify;">Monika uses FlexFit to book her favorite workouts on repeat & keep up a fitness routine.</p>
+			</div>
+			<hr>
+			<div style="width: 100%; justify-content: space-between;">
+				<div>
+					<h5>Strength Training</h5>
+					<span class="popup-number">x2</span>
+				</div>
+				<div style="flex-direction:column;">
+					<h5>16 credits</h5>
+					<h6>8 credits each</h6>
+				</div>
+			</div>
+			<hr>
+			<div style="width: 100%; justify-content: space-between;">
+				<div>
+					<h5>Hot Yoga</h5>
+					<span class="popup-number">x3</span>
+				</div>
+				<div style="flex-direction:column;">
+					<h5>21 credits</h5>
+					<h6>7 credits each</h6>
+				</div>
+			</div>
+			<hr>
+			<div style="width: 100%; justify-content: space-between;">
+				<div>
+					<h5 style="margin-top:10px;">Cycling</h5>
+					<span class="popup-number">x6</span>
+				</div>
+				<div style="flex-direction:column;">
+					<h5>30 credits</h5>
+					<h6>5 credits each</h6>
+				</div>
+			</div>
+			<hr>
+			<div style="width: 100%; justify-content: space-between;">
+				<div>
+					<h5>Barre</h5>
+					<span class="popup-number">x1</span>
+				</div>
+				<div style="flex-direction:column;">
+					<h5>3 credits</h5>
+				</div>
+			</div>
+			<hr>
+			<div style="width: 100%; justify-content: space-between;">
+				<div>
+					<h5>Cryotherapy</h5>
+					<span class="popup-number">x1</span>
+				</div>
+				<div style="flex-direction:column;">
+					<h5>13 credits</h5>
+				</div>
+			</div>
+		</div>
+		<!-- End of users -->
+	</div>
+	<button class="round-previous" id="plans-carousel-next-button"> > </button>
+</div>
+
+	<!-- DOTS -->
+	<div class="three-dots" style="display:none;">
+		<button class="dot" id="dot-1" href="#tomek"></button>
+		<button class="dot" id="dot-2" href="#kasia"></button>
+		<button class="dot" id="dot-3" href="#monika"></button>
+	</div>
+	<br>
+	<br>
+	<a class="try-button-big" href="{% url 'register' %}" style="text-decoration:none;">Try for free</a>
+	<br>
+	<a  href="{% url 'plans' %}">See all plans</a>
+</div>
+<br>
+<br>
+
+<!-- ----- ----- ----- 3RD SECTION ----- ----- ----- -->
+<div class="explanation2">
+	<div class="expl-inner">
+		<div class="expl-inner-inner">
+			<h1 class="big-title">How your credits work</h1>
+			<br>
+			<h4>
+				Credits can be used to book a class or appointment.
+				The amount of credits needed to book varies by reservation type, location, popularity & time.
+			</h4>
+		</div>
+		{% load static %}
+		<img src="{% static 'credits-scale_desktop_dark.gif' %}" class="credits-gif" alt="credits scale gif">
+	</div>
+
+
+	<div class="expl-inner">
+		<div class="expl-inner-inner">
+			<h1 class="big-title">Save with a membership</h1>
+			<br>
+			<h4>
+				Exclusive member rates and in-app promotions for newly-added studios & first-time visits can help you save some cash.
+			</h4>
+		</div>
+		<div class="mockup-user-example" style="width:350px;">
+			<div style="margin-bottom:10px; justify-content:space-between;">
+				<div style="display:flex; flex-direction:column; align-items: start; margin-right:10px;">
+					<h4 style="font-weight:700;"> 45 min Vinyasa Flow</h4>
+					<p>Tue, Jul 6 4:30PM - 5:15PM</p>
+					<p>Oksana M.</p>
+				</div>
+				{% load static %}
+				<img src="{% static 'yoga_mockup_photo.jpg' %}" width="120" heigth="60" alt="yoga class photo" style="object-fit: cover; border-radius:10px; align-self:end;">
+			</div>
+			<hr style="margin:0px;">
+			<div style="flex-direction:row; width: 100%; justify-content:space-between; align-items:center; margin-top:0px;">
+				<div style="flex-direction:column; align-items:start; justify-content:space-between; margin: -10px 0px;">
+					<div style="margin: 0px;">
+						<p style="margin-right:10px;">3 credits</p>
+						<p style="text-decoration: line-through; color:grey;">6 credits</p>
+					</div>
+					<span class="popup-number" style="width: 70px; align-items:center; margin:0px;">Save 50%</span>
+				</div>
+				<button class="try-button" style="width:120px; height:30px; align-self:end; margin: 10px 0px;">Reserve</button>
+			</div>
+
+		</div>
+	</div>
+
+	<br>
+	<a class="try-button-big" href="{% url 'register' %}" style="text-decoration:none;">Try for free</a>
+	<br>
+</div>
+
+
+<h1 class="big-title" style="margin: 50px;">Get credits. Get out there. Repeat.</h1>
+<br>
+<br>
+<br>
+
+{% include 'sport/bottombar.html' %}
+
+
+{% endblock %}
+
+{% block script %}
+{% load static %}
+    <script src="{% static 'sport/sport3.js' %}"></script>
+{% endblock %}

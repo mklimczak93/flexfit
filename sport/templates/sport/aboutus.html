@@ -1,0 +1,93 @@
+{% extends "sport/layout.html" %}
+
+
+{% block body %}
+
+<div class="full-image">
+	{% load static %}
+	<img src="{% static 'hero_about-us_desktop-ed.jpg' %}" class="full-image">
+</div>
+
+<div class="explanation2">
+	<h1 class="big-title">About us</h1>
+	<p class="bigger-p">FlexFit is revolutionizing the fitness and wellness industry
+		by bringing together the world’s best classes and experiences into one app.
+		Our mission? To motivate people to live inspired lives every day by introducing
+		and seamlessly connecting them to soul-nurturing experiences.
+		Whether you want to sweat it out with a HIIT class, unwind with a massage,
+		or stream a yoga class from your home, we make it easy to prioritize your health and wellness.</p>
+
+
+	<h2 style="margin-top: 100px;">Our core values</h2>
+	<p class="bigger-p">At FlexFit and Mindbody, we understand that professional growth begins with personal growth.
+		Our core values are expressed through everything we make, say and do.</p>
+
+	<br>
+	<br>
+		<div class="icon-grid">
+		<div>
+			{% load static %}
+			<img src="{% static '01. icon_impact-over-effort-01.svg' %}">
+			<h5 style="margin-top:20px;">Impact Over Effort</h5>
+		</div>
+		<div>
+			{% load static %}
+			<img src="{% static '02. icon_bias-for-action-01.svg' %}">
+			<h5 style="margin-top:20px;">Bias for Action</h5>
+		</div>
+		<div>
+			{% load static %}
+			<img src="{% static '03. icon-inclusion-01.svg' %}">
+			<h5 style="margin-top:20px;">Inclusion is a Competitive Advantage</h5>
+		</div>
+		<div>
+			{% load static %}
+			<img src="{% static '04. icon_debate-decide-commit-01.svg' %}">
+			<h5 style="margin-top:20px;">Debate, Decide, Commit</h5>
+		</div>
+		<div>
+			{% load static %}
+			<img src="{% static '05. icon_consciously-evolve-01.svg' %}">
+			<h5 style="margin-top:20px;">Consciously Evolve</h5>
+		</div>
+		<div>
+			{% load static %}
+			<img src="{% static '06. icon_no-pain-01.svg' %}">
+			<h5 style="margin-top:20px;">No Pain, No Gain</h5>
+		</div>
+		<div>
+			{% load static %}
+			<img src="{% static '07. icon_be-so-good-01.svg' %}">
+			<h5 style="margin-top:20px;">Be So Good They Can’t Ignore You</h5>
+		</div>
+		<div>
+			{% load static %}
+			<img src="{% static '08. icon_work-hard-01.svg' %}">
+			<h5 style="margin-top:20px;">Work Hard, Live Well</h5>
+		</div>
+	</div>
+</div>
+<div class="full-image">
+	{% load static %}
+	<img src="{% static 'collage_about-us_desktop_ed.png' %}" class="full-image">
+</div>
+
+<div class="explanation2">
+	<h1 class="big-title">Inclusion is foundational</h1>
+	<p class="bigger-p">We believe in creating opportunities for everyone,
+		and that starts with empowering our team. We focus on something we all fundamentally need:
+		a sense of belonging. With inclusion as our foundation, we create a space where everyone
+		can thrive and make an impact</p>
+</div>
+
+<div class="explanation2">
+	<h1 class="big-title">Want to join the team?</h1>
+	<p class="bigger-p">Check out our open roles and apply — we’d love to hear from you.</p>
+	<br>
+	<br>
+	<a class="try-button-big" href="{% url 'careers' %}" style="text-decoration:none;">Search open positions</a>
+</div>
+
+
+{% include 'sport/bottombar.html' %}
+{% endblock %}

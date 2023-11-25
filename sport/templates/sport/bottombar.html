@@ -1,0 +1,77 @@
+<!-- ----- ----- ----- BOTTOMBAR ----- ----- ----- -->
+<div class="bottombar">
+	<div class="col-01">
+		<h4>Company</h4>
+		<a class="standard_a" href="{% url 'aboutus' %}">
+			<h5>About us</h5>
+		</a>
+		<a class="standard_a" href="{% url 'careers' %}">
+			<h5>Careers</h5>
+		</a>
+		<a class="standard_a" href="{% url 'press' %}">
+			<h5>Press</h5>
+		</a>
+	</div>
+	<div class="col-01">
+		<h4>Support</h4>
+		<a class="standard_a" href="{% url 'contactus' %}">
+			<h5>Contact us</h5>
+		</a>
+		<a class="standard_a" href="{% url 'helpcenter' %}">
+			<h5>Help center</h5>
+		</a>
+	</div>
+	<div class="col-01">
+		<h4>Partners</h4>
+		<a class="standard_a" href="{% url 'partner' %}">
+			<h5>Become a partner</h5>
+		</a>
+	</div>
+	<div class="col-01">
+		<h4>Community</h4>
+		<a class="standard_a" href="{% url 'referfriend' %}">
+			<h5>Refer a friend</h5>
+		</a>
+		<a class="standard_a" href="{% url 'locations' %}">
+			<h5>Locations</h5>
+		</a>
+	</div>
+</div>
+<div class="bottombar" style="border:none;">
+	<div class="col-01">
+		<h3>Enjoy fitness on the go</h3>
+		{% load static %}
+		<a href="https://www.apple.com/app-store/" class="social-media-link">
+			<img src="{% static 'app store logo 01.png' %}" class="app-store-logo" width="120" alt="app store logo">
+		</a>
+		<a href="https://play.google.com/store/apps" class="social-media-link">
+			<img src="{% static 'google store logo 02.png' %}" class="app-store-logo" width="120" alt="google store picture">
+		</a>
+		<br>
+	</div>
+	<div class="col-01">
+		<div class="social-media-icons">
+			<a class="standard_a" href="https://www.facebook.com/" class="social-media-link">
+				<i class="fa-brands fa-facebook-f" id="social-media-logo"></i>
+			</a>
+			<a class="standard_a" href="https://www.twitter.com/" class="social-media-link">
+				<i class="fa-brands fa-twitter" id="social-media-logo"></i>
+			</a>
+			<a class="standard_a" href="https://www.instagram.com/" class="social-media-link">
+				<i class="fa-brands fa-square-instagram" id="social-media-logo"></i>
+			</a>
+			<a class="standard_a" href="https://www.pinterest.com/" class="social-media-link">
+				<i class="fa-brands fa-pinterest" id="social-media-logo"></i>
+			</a>
+			<a class="standard_a" href="https://www.spotify.com/" class="social-media-link">
+				<i class="fa-brands fa-spotify" id="social-media-logo"></i>
+			</a>
+			<a class="standard_a" href="https://www.tiktok.com/" class="social-media-link">
+				<i class="fa-brands fa-tiktok" id="social-media-logo"></i>
+			</a>
+		</div>
+		<a class="standard_a" href="{% url 'entry' title='terms' %}">Terms of Use</a>
+		<a class="standard_a" href="{% url 'entry' title='privacy' %}">Privacy Policy</a>
+		<a class="standard_a" href="{% url 'entry' title='cookies' %}">Cookies & ads</a>
+	</div>
+</div>

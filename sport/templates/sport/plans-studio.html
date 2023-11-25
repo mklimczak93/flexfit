@@ -1,0 +1,256 @@
+{% extends "sport/layout-studio.html" %}
+
+{% block body %}
+<!-- ----- ----- ----- 1ST SECTION ----- ----- ----- -->
+<div class="explanation">
+	<h1 class="big-title">Pick a plan that works for you</h1>
+	<br>
+	<h4 style="line-height: 2;">Fitness and wellness aren’t one-size-fits-all, and neither are our memberships.
+		<br>Choose a plan that best fits your lifestyle.
+	</h4>
+	<br>
+	<a class="try-button-big" href="#section2" style="text-decoration:none;">See all plans</a>
+</div>
+<br>
+<!-- ----- ----- ----- 2ND SECTION WITH EXAMPLES ----- ----- ----- -->
+<div class="explanation2" id="section2">
+	<br>
+	<h1 class="big-title">Available plans</h1>
+	<br>
+	<h4 style="line-height: 2;">
+		After your trial, you’ll automatically enroll onto our 47 credits per month plan.
+		<br>You can adjust your plan at any time.
+		Learn more about credits
+		<a href="{% url 'credits' %}">here</a>.
+	</h4>
+	<br>
+	<br>
+
+	<div style="display:flex; flex-direction:row; justify-content:center; align-items:center; gap:20px;">
+	<button class="round-previous" id="plans-carousel-previous-button"> < </button>
+	<div class="plans-list" id="plans-list">
+		<!-- Plan 00 -->
+		<div class="invisible-plan" id="inv-plan1">
+		</div>
+		<!-- Plan 00 -->
+		<div class="invisible-plan" id="inv-plan2">
+		</div>
+		<!-- Plan 01 -->
+		<div class="mockup-plan" id="plan1">
+			<h3>9 credits</h3>
+			<br>
+			<h1>39 pln/mo</h1>
+		</div>
+
+		<!-- Plan 02 -->
+		<div class="mockup-plan" id="plan2">
+			<h3>25 credits</h3>
+			<br>
+			<h1>59 pln/mo</h1>
+		</div>
+
+		<!-- Plan 03 -->
+		<div class="mockup-plan" id="plan3" style="background-color: rgba(218, 100, 171, 0.3); border: 0.5px solid white;">
+			<div style="display:flex; flex-direction: row; justify-content: space-between; align-items: center;">
+				<h3>47 credits</h3>
+				<span class="popup-number2">default</span>
+			</div>
+			<br>
+			<h1>79 pln/mo</h1>
+		</div>
+
+		<!-- Plan 04 -->
+		<div class="mockup-plan" id="plan4">
+			<h3>64 credits</h3>
+			<br>
+			<h1>99 pln/mo</h1>
+		</div>
+
+		<!-- Plan 05 -->
+		<div class="mockup-plan" id="plan5">
+			<h3>80 credits</h3>
+			<br>
+			<h1>119 pln/mo</h1>
+		</div>
+		<!-- Plan 00 -->
+		<div class="invisible-plan" id="inv-plan3">
+		</div>
+		<!-- Plan 00 -->
+		<div class="invisible-plan" id="inv-plan4">
+		</div>
+	</div>
+	<button class="round-previous" id="plans-carousel-next-button"> > </button>
+	</div>
+</div>
+
+<!-- Dots -->
+<div class="three-dots" style="display:none;">
+	<button class="dot" id="dot-4" href="#plan1"></button>
+	<button class="dot" id="dot-5" href="#plan2"></button>
+	<button class="dot" id="dot-6" href="#plan3"></button>
+	<button class="dot" id="dot-7" href="#plan4"></button>
+	<button class="dot" id="dot-8" href="#plan5"></button>
+</div>
+<br>
+<br>
+<a class="try-button-big" href="{% url 'register' %}" style="text-decoration:none;">Try for free</a>
+
+<br>
+<br>
+
+<!-- ----- ----- ----- 3RD SECTION ----- ----- ----- -->
+<div class="plans-check-list">
+	<h1 class="big-title" style="margin-left:100px; margin-bottom: 50px;">Plans checklist</h1>
+		<div style="display:flex; flex-direction:row; gap:10px; margin: 15px;">
+			<i class="fa-solid fa-check"></i>
+			<h5>Book classes & appointments worldwide</h5>
+		</div>
+		<div style="display:flex; flex-direction:row; gap:10px; margin: 15px;">
+			<i class="fa-solid fa-check"></i>
+			<h5>Adjust or cancel your plan at any time</h5>
+		</div>
+		<div style="display:flex; flex-direction:row; gap:10px; margin: 15px;">
+			<i class="fa-solid fa-check"></i>
+			<h5>Invite friends to join you and score rewards for each friend who signs up</h5>
+		</div>
+</div>
+<br>
+<br>
+<br>
+
+<!-- ----- ----- ----- FAQ ----- ----- ----- -->
+<div class="accordion-main-div">
+	<h1 class="big-title" style="margin-bottom: 30px;">Common questions</h1>
+<div class="accordion" id="accordionFAQ">
+
+	<div class="accordion-item">
+	  <h2 class="accordion-header" id="headingOne">
+		<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			Where can I use my FitFlex credits?
+		</button>
+	  </h2>
+	  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+		<div class="accordion-body">
+			Short answer, thousands of places. Tap here to find classes and appointments at the best studios, salons and spas near you.
+		</div>
+	  </div>
+	</div>
+
+	<div class="accordion-item">
+	  <h2 class="accordion-header" id="headingTwo">
+		<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+			How can I save by booking through FitFlex?
+		</button>
+	  </h2>
+	  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+		<div class="accordion-body">
+			FitFlex members have access to special rates at the top studios, salons and spas. Not only can you save more with a FitFlex membership, you have the flexibility to use your credits where and how you want to.
+		</div>
+	  </div>
+	</div>
+
+	<div class="accordion-item">
+	  <h2 class="accordion-header" id="headingThree">
+		<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+			How do I know how much a class or appointment costs in credits?
+		</button>
+	  </h2>
+	  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+		<div class="accordion-body">
+			After signing up, you’ll be able to see the credit price for a class or appointment, which varies by things like popularity, time and reservation type.
+		</div>
+	  </div>
+	</div>
+
+	<div class="accordion-item">
+		<h2 class="accordion-header" id="headingFour">
+		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+			What if I run out of credits?
+		  </button>
+		</h2>
+		<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+		  <div class="accordion-body">
+			Good news, you can always add more! Just go to the “Add credits” tab in the app to purchase more and keep up your routine.
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="accordion-item">
+		<h2 class="accordion-header" id="headingFive">
+		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+			What if I don’t use all of my credits?
+		  </button>
+		</h2>
+		<div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+		  <div class="accordion-body">
+			Don’t sweat — your credits roll over when you are on a paid FitFlex membership!
+			Once you become a paying member of FitFlex, you can roll over up to the number of credits in your next month’s plan.
+			For example, if your next month’s plan includes 19 credits, you can roll over up to 19 credits into that month,
+			and they’ll appear in your account up to 48 hours after renewal.
+			Any additional credits you have will expire at the end of the month and if you decide to cancel,
+			all remaining credits will be forfeited on the last day of your membership.If you are on a trial,
+			you will have access to your free credits until your trial end date. After this date, any leftover credits from the trial will expire.
+			If you purchased any top-up credits or credit bundles during your trial, they will roll over into your next month.
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="accordion-item">
+		<h2 class="accordion-header" id="headingSix">
+		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+			What happens if I cancel a reservation?
+		  </button>
+		</h2>
+		<div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+		  <div class="accordion-body">
+			You’ll be able to see each reservation’s cancellation window when booking (it’s usually 12 hours).
+			If you cancel a reservation in time, we won’t charge you, and the credits you used to book will automatically be
+			returned to your account. If you cancel late, you’ll receive a late cancellation fee.
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="accordion-item">
+		<h2 class="accordion-header" id="headingSeven">
+		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+			What happens if I miss a reservation?
+		  </button>
+		</h2>
+		<div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+		  <div class="accordion-body">
+			If you miss a reservation without cancelling, you’ll get your credits back and be charged a missed reservation fee.
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="accordion-item">
+		<h2 class="accordion-header" id="headingEight">
+		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+			What is your membership cancellation policy, and how do I cancel?
+		  </button>
+		</h2>
+		<div id="collapsEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+		  <div class="accordion-body">
+			Although we’ll be sad to see you go, you’re easily able to cancel your membership at any time by following these steps.
+			You can also cancel your trial at any time, and we’ll remind you of your renewal terms 2 days before it ends.
+		  </div>
+		</div>
+	  </div>
+
+  </div>
+
+</div>
+<!-- ----- ----- ----- BOTTOMBAR ----- ----- ----- -->
+<br>
+<br>
+<br>
+
+
+{% include 'sport/bottombar.html' %}
+
+{% endblock %}
+
+{% block script %}
+{% load static %}
+    <script src="{% static 'sport/sport2.js' %}"></script>
+{% endblock %}

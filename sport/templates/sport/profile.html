@@ -1,0 +1,148 @@
+{% extends "sport/layout.html" %}
+
+
+{% block body %}
+
+    <!-- ----- ----- ----- EDIT PROFILE ----- ----- ----- -->
+
+    <div class="main-box" id="edit-profile">
+        <div class="half" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
+
+        </div>
+        <div class="half" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; padding: 30px;">
+            <h3>Edit your profile information</h3>
+
+        </div>
+
+    </div>
+
+    <!-- ----- ----- ----- PROFILE CALENDAR ----- ----- ----- -->
+
+    <div class="main-box" id="profile-calendar">
+        <div class="half" style="width: 80%; margin-right: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
+            <div class="profile-menu" >
+                <div class="profile-menu-div">
+                    <img src="{{user.profile_photo.url }}" class="profile-picture" alt="profile picture2">
+                    <button class="edit-profile-button" onclick="makeEditProfileVisible()">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                    <!--
+                    <buton class="edit-profile-circle">
+                        <i class="fa-solid fa-pen"></i>
+                    </buton>
+                    -->
+
+                    <br>
+                    <h4>{{user.first_name}} {{user.last_name}}</h4>
+                    <h6>@{{user.username}}</h6>
+                    <h5>
+                        <i class="fa-solid fa-location-dot"></i>
+                        {{user.get_city_display}}, PL
+                    </h5>
+                    <br>
+
+                    <div style="width:100%; display:flex; flex-direction:row; justify-content:space-around;">
+                        <div class="small-middle">
+                            <h6>Classes taken</h6>
+                            <h5>{{user.get_number_classes_taken}}</h5>
+                        </div>
+                        <div class="small-middle">
+                            <h6>Studios visited</h6>
+                            <h5>{{user.get_number_studios}}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-menu-div">
+                    <div class="small-middle">
+                        <a href="{% url 'index' %}">
+                            <i class="fa-solid fa-calendar"></i>
+                            <h5>Your classes</h5>
+                        </a>
+                    </div>
+                    <div class="small-middle">
+                        <a href="{% url 'index' %}" id="class-search-button" class="standard_a">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <h5>Find classes</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="profile-menu-div">
+                    <a href="{% url 'credits' %}">How FlexFit works</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="half" style="margin-right: 30px; border-top-left-radius: 0px; border-bottom-left-radius: 0px; padding: 30px; overflow-y: clip;">
+            <div class="calendar-heading-div">
+                <h3>Your classes</h3>
+                <div style="display: flex; flex-direction: row; gap: 8px;">
+                    <p>list</p>
+                    <p>month</p>
+                </div>
+            </div>
+
+            <div class="calendar" id="calendar" value="{{month_number}}">
+                <div class="calendar-title">
+                    <button class="small-button" id="previous-month-button">
+                        <i class="fa-solid fa-caret-left"></i>
+                    </button>
+                    <h3 id="month-name" value="{{ month_name }}">{{ month_name }}</h3>
+                    <h3 id="year-number" value="{{ year_number }}">{{ year_number }}</h3>
+                    <button class="small-button" id="next-month-button">
+                        <i class="fa-solid fa-caret-right"></i>
+                    </button>
+                </div>
+                <div class="calendar-days">
+                    <!-- days of the week -->
+                    <div class="day-name"> Mon </div>
+                    <div class="day-name"> Tue </div>
+                    <div class="day-name"> Wed </div>
+                    <div class="day-name"> Thu </div>
+                    <div class="day-name"> Fri </div>
+                    <div class="day-name"> Sat </div>
+                    <div class="day-name"> Sun </div>
+                    <!-- previous month days -->
+                    {% for i in previous_days_list %}
+                    <div class="day2"> {{i}} </div>
+                    {% endfor %}
+                    <!-- current month days -->
+                    {% for i in days_in_month_list %}
+                    {% if i == day_number %}
+                    <div class="today" id="{{i}}">
+                        <a href="{% url 'show_classes_for_day' %}" onclick="showClassesForTheDay({{i}})">
+                        {{i}}
+                        </a>
+                    </div>
+                    {% else %}
+                    <div class="day" id="{{i}}">{{i}}</div>
+                    {% endif %}
+                    {% endfor %}
+                    <!-- future month days -->
+                    {% for i in future_days_list %}
+                    <div class="day2">{{i}}</div>
+                    {% endfor %}
+                </div>
+                <br>
+                <!-- classes that day -->
+
+            <div class="class-info-calendar" id="class-info-calendar">
+
+            </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    <!-- ----- ----- ----- END ----- ----- ----- -->
+
+</div>
+
+
+
+{% endblock %}
+
+{% block script %}
+{% load static %}
+    <script src="{% static 'sport/sport.js' %}"></script>
+{% endblock %}

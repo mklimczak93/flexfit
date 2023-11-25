@@ -1,0 +1,71 @@
+{% extends "sport/layout.html" %}
+
+{% block body %}
+<div class="full-image">
+	{% load static %}
+	<img src="{% static 'hero_careers_desktop-ed.jpg' %}" class="full-image">
+</div>
+
+<div class="explanation2">
+	<h1 class="big-title">Life at FlexFit</h1>
+	<p class="bigger-p">From New York to Montana to London and everywhere in between,
+		you can find our growing team across the globe working passionately toward the same goal
+		— making fitness and wellness accessible (and fun!) to everyone while simultaneously helping local businesses grow.</p>
+	<br>
+	<br>
+	<h2 style="margin-top: 100px;">Our benefits</h2>
+	<p class="bigger-p">FlexFit is now a part of Mindbody,
+		a global leader in benefits that make working well and living well a priority. Visit the Mindbody page here to learn more.</p>
+	<br>
+	<br>
+</div>
+<div class="icon-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+	<div>
+		{% load static %}
+		<img src="{% static '09. icon_generous-paid-time-off-01.svg' %}">
+		<h5 style="margin-top:20px;">Generous paid time off</h5>
+	</div>
+	<div>
+		{% load static %}
+		<img src="{% static '10. icon_family-leave-01.svg' %}">
+		<h5 style="margin-top:20px;">Family leave & benefits</h5>
+	</div>
+	<div>
+		{% load static %}
+		<img src="{% static '11. icon_full-medical-01.svg' %}">
+		<h5 style="margin-top:20px;">Full medical benefits</h5>
+	</div>
+	<div>
+		{% load static %}
+		<img src="{% static '12. icon_financial-wellbeing-01.svg' %}">
+		<h5 style="margin-top:20px;">Financial wellbeing</h5>
+	</div>
+	<div>
+		{% load static %}
+		<img src="{% static '13. icon_work-from-anywhere-01.svg' %}">
+		<h5 style="margin-top:20px;">Work from anywhere</h5>
+	</div>
+	<div>
+		{% load static %}
+		<img src="{% static '14. icon_wellness-body-mind-01.svg' %}">
+		<h5 style="margin-top:20px;">Wellness for body & mind</h5>
+	</div>
+</div>
+
+<div class="explanation2">
+	<h1 class="big-title">Work happens everywhere</h1>
+	<p class="bigger-p">For us, it’s not about showing up in an office every day, it’s about showing up at your best.
+		We support our globally distributed workforce with virtual and in-person onboarding,
+		cross-team meetings and software that makes it easy to stay connected, like Slack.</p>
+	<br>
+	<br>
+</div>
+
+
+
+
+
+
+
+{% include 'sport/bottombar.html' %}
+{% endblock %}

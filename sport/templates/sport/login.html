@@ -1,0 +1,38 @@
+{% extends "sport/layout.html" %}
+
+{% block body %}
+
+<div class="main-box loginbox">
+	<div class="half login">
+		{% load static %}
+        <img src="{% static 'MemberJourney-BannerFull-ReadyStart2.jpg' %}" height="100%" style="object-fit: fill;" alt="flexfit promo photo">
+	</div>
+	<div class="half" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; padding: 30px;">
+		<div class="login-menu">
+			<h2>Welcome back</h2>
+			{% if message %}
+				<div><p>{{ message }}</p></div>
+			{% endif %}
+			<br>
+			<form action="{% url 'login' %}" method="post">
+				{% csrf_token %}
+				<div class="form-group-login">
+					<input autofocus class="form-control" type="text" name="username" placeholder="Username" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
+					<input class="form-control" type="password" name="password" placeholder="Password" style="border-top-left-radius: 0px; border-top-right-radius: 0px;">
+					<br>
+					<input class="login-button" type="submit" value="Login">
+				</div>
+			</form>
+			<br>
+			<p style="font-size:14px; margin-bottom: 10px;">Don't have an account?</p>
+			<a class="standard_a" href="{% url 'register' %}">Register here.</a>
+			<br>
+			<hr>
+			<a class="standard_a" href="{% url 'partner-login' %}" style="margin: 10px 0px -30px 0px;"> Studio partner log in</a>
+		</div>
+	</div>
+
+</div>
+
+
+{% endblock %}

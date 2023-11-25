@@ -1,0 +1,38 @@
+{% extends "sport/layout.html" %}
+
+{% block body %}
+
+<div class="main-box loginbox">
+	<div class="half" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px; overflow: hidden;">
+		{% load static %}
+        <img src="{% static 'trainer01.jpg' %}" width="100%" style="object-fit: contain;" alt="flexfit partner photo">
+	</div>
+	<div class="half" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; padding: 30px;">
+		<div class="login-menu">
+			<h2 style="margin-bottom:40px;">Welcome back</h2>
+			{% if message %}
+				<div><p>{{ message }}</p></div>
+			{% endif %}
+			<br>
+			<form action="{% url 'partner-login' %}" method="post" style="display:flex;align-items:center;justify-content:center;">
+				{% csrf_token %}
+				<div class="form-group-login">
+					<input autofocus class="form-control" type="text" name="username" placeholder="Studio name" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
+					<input class="form-control" type="password" name="password" placeholder="Password" style="border-top-left-radius: 0px; border-top-right-radius: 0px;">
+					<br>
+					<input class="login-button" type="submit" value="Login">
+				</div>
+			</form>
+			<br>
+			<p style="font-size:14px; margin-bottom: 10px;">Don't have an account?</p>
+			<a class="standard_a" href="{% url 'partner' %}">Register here.</a>
+			<br>
+			<hr>
+			<a class="standard_a" href="{% url 'login' %}" style="margin: 10px 0px -30px 0px;"> Standard user login</a>
+		</div>
+	</div>
+
+</div>
+
+
+{% endblock %}
