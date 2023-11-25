@@ -74,6 +74,7 @@ I must conclude that despite the app was quite time-consuming to finish, I have 
 **How to run**
 
 This application was designed with Django. To run project please use:
+
 python manage.py runserver
 
 **APIs, packages, modules and libraries required**
